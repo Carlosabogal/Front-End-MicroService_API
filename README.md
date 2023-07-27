@@ -7,11 +7,12 @@ Esta es una aplicación Angular que muestra la venta y la informacion de los det
 ### Instalación y Ejecución
 
 1. Clone este repositorio y este [ https://github.com/Carlosabogal/Back-End-MicroService_API-Konex ] en su máquina local.
-2. Navegue a la carpeta del proyecto.
-3. Ejecute el siguiente comando para instalar las dependencias:
-Ve la terminal e inyecta el comando ng serve para ejecutar el proyecto Front End Valida que la etiqueta "@CrossOrigin(origins = "http://localhost:4200")" tenga el mismo puerto que el abierto por el angular
 
-¡Por supuesto! Aquí tienes el contenido del archivo README en español:
+2. Navegue a la carpeta del proyecto.
+
+3. Ejecute el siguiente comando para instalar las dependencias:
+
+Ve la terminal e inyecta el comando ng serve para ejecutar el proyecto Front End Valida que la etiqueta "@CrossOrigin(origins = "http://localhost:4200")" tenga el mismo puerto que el abierto por el angular
 
 # Ventana de Detalles del Medicamento
 
@@ -20,7 +21,8 @@ Esta es una aplicación Angular que muestra los detalles de un medicamento segú
 ## Instrucciones
 
 1. Ingrese el ID del medicamento en el campo proporcionado y haga clic en "Buscar Medicamento".
-2. Se mostrarán los detalles del medicamento, incluyendo su ID, nombre, laboratorio, fecha de fabricación, fecha de vencimiento, cantidad en stock y valor unitario.
+   
+3. Se mostrarán los detalles del medicamento, incluyendo su ID, nombre, laboratorio, fecha de fabricación, fecha de vencimiento, cantidad en stock y valor unitario.
 
 ## Requisitos
 
@@ -29,15 +31,22 @@ Esta es una aplicación Angular que muestra los detalles de un medicamento segú
 ## Instalación y Ejecución
 
 1. Clone este repositorio en su máquina local.
+
 2. Navegue a la carpeta del proyecto.
+
 3. Ejecute el siguiente comando para instalar las dependencias:
 " npm install "
+
 4. Luego, inicie la aplicación con el siguiente comando:
 "ng serve "
+
 5. Abra su navegador web y vaya a `http://localhost:4200/` para ver la aplicación en funcionamiento.
 ## Funcionamiento
+
 1. Al entrar al puerto veran una barra de navegacion con los campos dea actualizar, crear medicamento, Buscar y eliminar
+
 2. En la venta " Buscar y Eliminar"  debe ingresar el ID del medicamento deseado en el campo correspondiente y haga clic en el botón "Buscar Medicamento".
+
 3. La aplicación realizará una solicitud a una API para obtener los detalles del medicamento asociado al ID proporcionado.
 Una vez recibida la respuesta de la API, la aplicación mostrará los detalles del medicamento en la interfaz de usuario.
 Los detalles que se muestran incluyen:
@@ -76,19 +85,25 @@ Valor unitario del medicamento.
 Ingresar Detalles del Medicamento:
 "
 2. El usuario completa los campos requeridos en la interfaz de usuario.
+   
     Ingresa el nombre del medicamento en el campo "Nombre".
     Ingresa el laboratorio fabricante en el campo "Laboratorio".
     Ingresa la fecha de fabricación en el campo "Fecha de Fabricación" en formato dd/mm/aaaa.
     Ingresa la fecha de vencimiento en el campo "Fecha de Vencimiento" en formato dd/mm/aaaa.
     Ingresa la cantidad disponible en stock del medicamento en el campo "Cantidad en Stock".
     Ingresa el valor unitario del medicamento en el campo "Valor Unitario".
+    
 Validación de los Datos:
 
 3. Antes de continuar con la creación del medicamento, la aplicación realiza una validación para asegurarse de que los campos requeridos estén completados y que los datos ingresados sean válidos.
-4. Si hay algún campo faltante o datos inválidos, la aplicación muestra un mensaje de error y solicita al usuario que complete los campos correctamente.
-Creación del Medicamento:
+   
+3. Si hay algún campo faltante o datos inválidos, la aplicación muestra un mensaje de error y solicita al usuario que complete los campos correctamente.
+
+# Creación del Medicamento:
 5. Una vez que todos los campos requeridos están completos y los datos son válidos, el usuario hace clic en el botón "Crear Medicamento".
+
 6. La aplicación procesa la solicitud y crea un nuevo registro en la base de datos con los detalles del medicamento ingresados.
+
 7.El medicamento se agrega a la lista de medicamentos disponibles en la base de datos.
 
 ## Actualizar Medicamento
@@ -100,12 +115,19 @@ Creación del Medicamento:
 
 ID: Identificador único del medicamento que se desea actualizar.
 Campos para editar:
+
 Nombre: Nombre actual del medicamento.
+
 Laboratorio: Laboratorio que fabricó el medicamento.
+
 Fecha de Fabricación: Fecha de fabricación actual del medicamento (formato dd/mm/aaaa).
+
 Fecha de Vencimiento: Fecha de vencimiento actual del medicamento (formato dd/mm/aaaa).
+
 Cantidad en Stock: Cantidad disponible en stock del medicamento.
+
 Valor Unitario: Valor unitario actual del medicamento.
+
 3. Una vez que los campos se completan y validan correctamente, el usuario hace clic en el botón "Actualizar Medicamento".
 La aplicación procesa la solicitud y actualiza el registro del medicamento en la base de datos con la nueva información ingresada.
 
@@ -120,10 +142,15 @@ La aplicación procesa la solicitud y actualiza el registro del medicamento en l
   Medicamento ID: Identificador único del medicamento que se va a vender.
   Cantidad: Cantidad de medicamentos a vender.
 3. Realizar Venta
+
     El usuario ingresa el ID del medicamento que se va a vender en el campo "Medicamento ID".
+    
     El usuario ingresa la cantidad de medicamentos que se van a vender en el campo "Cantidad".
+    
     La aplicación valida que ambos campos estén completados y que los datos ingresados sean válidos.
+    
 4. Si hay algún campo faltante o datos inválidos, la aplicación muestra un mensaje de error y solicita al usuario que complete los campos correctamente.
+5. 
 4. Una vez que los campos se completan y validan correctamente, el usuario hace clic en el botón "Realizar Venta".
 
 ## Actualizar Ventas
@@ -138,11 +165,16 @@ Campos requeridos:
   Cantidad: Cantidad de medicamentos vendidos en la venta.
 3. Actualizar Venta
   El usuario ingresa el ID de la venta que desea actualizar en el campo "Venta ID".
+
   El usuario ingresa el ID del medicamento vendido en la venta en el campo "Medicamento ID".
+  
   El usuario ingresa la cantidad de medicamentos vendidos en la venta en el campo "Cantidad".
+  
 Una vez que los campos actualizados se completan y validan , el usuario hace clic en el botón "Actualizar Venta".
-4. La aplicación procesa la solicitud y actualiza el registro de la venta en la base de datos con la nueva información ingresada.
-Se actualizan los detalles de la venta, como el medicamento vendido y la cantidad, en la base de datos.
+
+5. La aplicación procesa la solicitud y actualiza el registro de la venta en la base de datos con la nueva información ingresada.
+6. 
+7. Se actualizan los detalles de la venta, como el medicamento vendido y la cantidad, en la base de datos.
 
 ## Buscar Ventas por Rango de Fechas - Funcionamiento
 1. La funcionalidad de "Buscar Ventas por Rango de Fechas" permite a los usuarios obtener un listado de ventas realizadas dentro de un período específico.
@@ -156,9 +188,15 @@ Se actualizan los detalles de la venta, como el medicamento vendido y la cantida
   Fecha de Fin: Fecha de fin del rango de fechas en el que se buscarán las ventas (formato dd/mm/aaaa).
 4. Buscar Ventas
   El usuario ingresa la fecha de inicio del rango de fechas en el campo "Fecha de Inicio".
+  
   El usuario ingresa la fecha de fin del rango de fechas en el campo "Fecha de Fin".
+  
 5. La aplicación valida que ambos campos estén completados y que los datos ingresados sean válidos.
+
 6. Una vez que los campos se completan y validan correctamente, el usuario hace clic en el botón "Buscar Ventas".
-7. La aplicación procesa la solicitud y muestra un listado de todas las ventas realizadas dentro del rango de fechas especificado.
-8. Cada venta en el listado mostrará detalles como el ID de la venta, el medicamento vendido, la cantidad vendida y el valor total de la venta.
-9. Adicionalmente, la aplicación proporciona un botón "Obtener Todas las Ventas". Si el usuario hace clic en este botón sin ingresar fechas de inicio y fin, la aplicación mostrará un listado con todas las ventas registradas, sin restricciones de fechas.
+7. 
+8. La aplicación procesa la solicitud y muestra un listado de todas las ventas realizadas dentro del rango de fechas especificado.
+9. 
+10. Cada venta en el listado mostrará detalles como el ID de la venta, el medicamento vendido, la cantidad vendida y el valor total de la venta.
+11. 
+12. Adicionalmente, la aplicación proporciona un botón "Obtener Todas las Ventas". Si el usuario hace clic en este botón sin ingresar fechas de inicio y fin, la aplicación mostrará un listado con todas las ventas registradas, sin restricciones de fechas.
