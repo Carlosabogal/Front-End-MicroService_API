@@ -1,0 +1,116 @@
+!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventas Realizadas</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./ventas.component.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     
+    </nav>
+  
+    <div class="form-container">
+      <h3>Actualizar Venta</h3>
+      <form (ngSubmit)="actualizarVenta(venta.id)">
+        <div class="form-group">
+          <label for="ventaId">Venta ID:</label>
+          <input type="number" id="ventaId" class="form-control" [(ngModel)]="venta.id" name="ventaId" required>
+        </div>
+        <div class="form-group">
+          <label for="medicamentoId">Medicamento ID:</label>
+          <input type="number" id="medicamentoId" class="form-control" [(ngModel)]="venta.medicamentoId" name="medicamentoId" required>
+        </div>
+        <div class="form-group">
+          <label for="cantidad">Cantidad:</label>
+          <input type="number" id="cantidad" class="form-control" [(ngModel)]="venta.cantidad" name="cantidad" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar Venta</button>
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+      </form>
+    </div>
+  
+    <div class="form-container">
+      <h3>Realizar venta</h3>
+      <div class="form-group">
+        <label for="medicamentoId">Medicamento ID:</label>
+        <input type="number" id="medicamentoId" class="form-control" [(ngModel)]="medicamentoId">
+      </div>
+      
+      <div class="form-group">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" class="form-control" [(ngModel)]="cantidad">
+      </div>
+  
+      <!-- Button to perform the sale -->
+      <button type="button" class="btn btn-success" (click)="realizarVentas()">Realizar Venta</button>
+    </div>
+    <!-- End of Form Container -->
+  
+    <div class="form-container">
+      <h2>Buscar Ventas por Rango de Fechas</h2>
+      <form (ngSubmit)="obtenerVentasPorRangoDeFechas()">
+        <div class="form-group">
+          <label for="fechaInicio">Fecha de Inicio:</label>
+          <input type="date" id="fechaInicio" class="form-control" [(ngModel)]="fechaInicio" name="fechaInicio">
+        </div>
+        <div class="form-group">
+          <label for="fechaFin">Fecha de Fin:</label>
+          <input type="date" id="fechaFin" class="form-control" [(ngModel)]="fechaFin" name="fechaFin">
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar Ventas</button>
+        <button type="button" class="btn btn-primary" (click)="getVentas()">Obtener Todas las Ventas</button>
+      </form>
+    </div>
+  
+    <div class="form-container">
+      <div *ngIf="ventas.length > 0">
+        <h2>Lista de Ventas</h2>
+        <table class="mat-mdc-table mdc-data-table__table cdk-table mat-elevation-z8 demo-table" role="table">
+          <thead role="rowgroup">
+            <tr role="row" mat-header-row class="mat-mdc-header-row mdc-data-table__header-row cdk-header-row ng-star-inserted">
+              <th>ID</th>
+              <th>Medicamento</th>
+              <th>Cantidad</th>
+              <th>Valor Unitario</th>
+             
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody role="rowgroup" class="mdc-data-table__content">
+            <tr *ngFor="let venta of ventas" role="row" mat-row class="mat-mdc-row mdc-data-table__row cdk-row ng-star-inserted">
+            
+              <td mat-cell class="mat-mdc-cell mdc-data-table__cell cdk-cell" role="cell">{{ venta.id }}</td>
+              <td mat-cell class="mat-mdc-cell mdc-data-table__cell cdk-cell" role="cell">{{ venta.medicamento.nombre }}</td>
+              <td mat-cell class="mat-mdc-cell mdc-data-table__cell cdk-cell" role="cell">{{ venta.cantidad }}</td>
+              <td mat-cell class="mat-mdc-cell mdc-data-table__cell cdk-cell" role="cell">{{ venta.valorUnitario }}</td>
+
+              <td mat-cell class="mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-demo-actions mat-column-demo-actions ng-star-inserted" role="cell">
+                <button type="button" class="btn btn-primary btn-sm" (click)="eliminarVenta(venta.id)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="ventas.length === 0">
+        <p>No hay ventas disponibles entre las fechas seleccionadas.</p>
+      </div>
+    </div>
+  </div> 
+
+  <div class="bottom-left">
+    <div class="container bg-light p-3">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/61449.png" alt="Image" width="50" height="50" class="mr-2">Regresar
+      </a>
+    </div>
+  </div>
+
+</body>
+
+</html>

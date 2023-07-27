@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Medicamento</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./app.component.css">
+</head>
+<body>
+
+<!-- app.component.html -->
+
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <a href="#" (click)="showContainer('search-delete-container')" [ngClass]="{ 'active': activeContainer === 'search-delete-container' }">Buscar y Eliminar</a>
+    <a href="#" (click)="showContainer('create-container')" [ngClass]="{ 'active': activeContainer === 'create-container' }">Crear Medicamento</a>
+    <a href="#" (click)="showContainer('update-container')" [ngClass]="{ 'active': activeContainer === 'update-container' }">Actualizar Medicamento</a>
+    <div class="btn-group">
+      <a class="dropdown-item" href="ventas" (click)="redirect()" routerLink="/ventas" routerLinkActive="active">Ventas</a>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+
+
+
+
+  <div class="container" id="search-delete-container" [ngClass]="{ 'active': activeContainer === 'search-delete-container' }">
+    <!-- Formulario de búsqueda y eliminación -->
+    <div class="search-delete-container">
+      <h1>{{ title }}</h1>
+      <p>{{ description }}</p>
+
+      <label for="medicamentId">Ingrese el ID del medicamento:</label>
+      <input type="number" id="medicamentId" [(ngModel)]="medicamentId" />
+
+      <button (click)="getMedicaments()">Buscar Medicamento</button>
+
+      <!-- Fix the delete button to be enabled only when a medicament is displayed -->
+      <button (click)="deleteMedicamentById()" [disabled]="!medicament">Eliminar Medicamento</button>
+
+      <div *ngIf="isDataLoading">
+        <!-- Display a loading indicator while data is being fetched -->
+        Loading...
+      </div>
+
+      <div *ngIf="medicament">
+        <h2>Detalles del medicamento:</h2>
+        <p>ID: {{ medicament.id }}</p>
+        <p>Nombre: {{ medicament.nombre }}</p>
+        <p>Laboratorio: {{ medicament.laboratorio }}</p>
+        <p>Fecha de Fabricación: {{ medicament.fechaFabricacion | date }}</p>
+        <p>Fecha de Vencimiento: {{ medicament.fechaVencimiento | date }}</p>
+        <p>Cantidad en Stock: {{ medicament.cantidadStock }}</p>
+        <p>Valor Unitario: {{ medicament.valorUnitario | currency }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="create-container" [ngClass]="{ 'active': activeContainer === 'create-container' }">
+    <!-- Formulario de creación de medicamentos -->
+    <div class="create-container">
+      <div class="form-title">
+        Crear Medicamento
+      </div>
+
+      <!-- Fix the success banner and button to show only after successful creation -->
+      <div class="success-banner" [ngClass]="{'show-banner': showSuccessNotification}">
+     
+        <button class="banner-button" (click)="showSuccessNotification = false">Ir a otra sección</button>
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="newMedicament.nombre">
+      </div>
+
+      <div class="form-group">
+        <label for="laboratorio">Laboratorio:</label>
+        <input type="text" id="laboratorio" [(ngModel)]="newMedicament.laboratorio">
+      </div>
+      <div class="form-group">
+        <label for="fechaFabricacion">Fecha de Fabricación:</label>
+        <input type="date" id="fechaFabricacion" [(ngModel)]="newMedicament.fechaFabricacion">
+      </div>
+
+      <div class="form-group">
+        <label for="fechaVencimiento">Fecha de Vencimiento:</label>
+        <input type="date" id="fechaVencimiento" [(ngModel)]="newMedicament.fechaVencimiento">
+      </div>
+
+      <div class="form-group">
+        <label for="cantidadStock">Cantidad en Stock:</label>
+        <input type="number" id="cantidadStock" [(ngModel)]="newMedicament.cantidadStock">
+      </div>
+
+      <div class="form-group">
+        <label for="valorUnitario">Valor Unitario:</label>
+        <input type="number" id="valorUnitario" [(ngModel)]="newMedicament.valorUnitario">
+      </div>
+
+      <button (click)="createMedicament()">Crear Medicamento</button>
+
+      <!-- Notificación de éxito -->
+      <div class="success-notification" [hidden]="!showSuccessNotification" id="successMessage">
+        ¡Medicamento creado con éxito!
+      </div>
+    </div>
+  </div>
+
+  <div class="container" [ngClass]="{ 'active': activeContainer === 'update-container' }">
+    <!-- Update container -->
+    <div class="update-container">
+      <div class="form-title">
+        Actualizar Medicamento
+      </div>
+      <div class="form-group">
+        <label for="id">ID:</label>
+        <input type="number" id="id" [(ngModel)]="newMedicament.id">
+      </div>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="newMedicament.nombre">
+      </div>
+  
+      <div class="form-group">
+        <label for="laboratorio">Laboratorio:</label>
+        <input type="text" id="laboratorio" [(ngModel)]="newMedicament.laboratorio">
+      </div>
+  
+      <div class="form-group">
+        <label for="fechaFabricacion">Fecha de Fabricación:</label>
+        <input type="date" id="fechaFabricacion" [(ngModel)]="newMedicament.fechaFabricacion">
+      </div>
+  
+      <div class="form-group">
+        <label for="fechaVencimiento">Fecha de Vencimiento:</label>
+        <input type="date" id="fechaVencimiento" [(ngModel)]="newMedicament.fechaVencimiento">
+      </div>
+  
+      <div class="form-group">
+        <label for="cantidadStock">Cantidad en Stock:</label>
+        <input type="number" id="cantidadStock" [(ngModel)]="newMedicament.cantidadStock">
+      </div>
+  
+      <div class="form-group">
+        <label for="valorUnitario">Valor Unitario:</label>
+        <input type="number" id="valorUnitario" [(ngModel)]="newMedicament.valorUnitario">
+      </div>
+
+        <button (click)="putMedicament(newMedicament)">Actualizar Medicamento</button>
+    
+  
+      <div *ngIf="showSuccessNotification">
+        Medicamento actualizado correctamente.
+      </div>
+  
+    </div>
+  </div>
+  
+
+  
+</body>
+
+</html>
